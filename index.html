@@ -9,6 +9,7 @@
   <style>
     :root {
       --fucsia: #f72585;
+      --fucsia-claro: #ff8ac5;
       --gris: #333;
       --gris-suave: #666;
       --fondo: #ffffff;
@@ -58,19 +59,45 @@
     header {
       text-align: center;
       padding: 4rem 2rem;
-      background: linear-gradient(120deg, #ffe0ec, #fff);
+      background: linear-gradient(135deg, var(--fucsia), var(--fucsia-claro));
+      position: relative;
+      overflow: hidden;
+      color: white;
+    }
+
+    .bubble {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: float 12s infinite ease-in-out;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 0.3; }
+      50% { transform: translateY(-40px) scale(1.1); opacity: 0.6; }
+      100% { transform: translateY(0) scale(1); opacity: 0.3; }
     }
 
     header h1 {
       font-family: 'Playfair Display', serif;
       font-size: 3rem;
       margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
     }
 
     header p {
       font-size: 1.1rem;
-      color: var(--gris-suave);
+      color: #fff;
       margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-buttons {
+      position: relative;
+      z-index: 1;
     }
 
     .hero-buttons a {
@@ -83,13 +110,13 @@
     }
 
     .explore {
-      background-color: var(--fucsia);
-      color: white;
+      background-color: white;
+      color: var(--fucsia);
     }
 
     .creator {
-      border: 2px solid var(--fucsia);
-      color: var(--fucsia);
+      border: 2px solid white;
+      color: white;
       background: transparent;
     }
 
@@ -231,6 +258,9 @@
 </nav>
 
 <header>
+  <div class="bubble" style="width:80px; height:80px; top:10%; left:15%; animation-delay:0s;"></div>
+  <div class="bubble" style="width:60px; height:60px; top:30%; left:70%; animation-delay:2s;"></div>
+  <div class="bubble" style="width:100px; height:100px; top:50%; left:45%; animation-delay:4s;"></div>
   <h1>Discover Premium Content</h1>
   <p>Connect with talented creators and explore exclusive content in a sophisticated, creator-first environment</p>
   <div class="hero-buttons">
@@ -242,29 +272,29 @@
 <section>
   <h2>Featured Content</h2>
   <p class="subtitle">Discover amazing creators and their exclusive previews</p>
-  <div class="grid">
-    <div class="card">
+  <div class="grid" style="display: flex; gap: 1.5rem; flex-wrap: nowrap; overflow-x: auto;">
+    <div class="card" style="min-width: 260px;">
       <img src="20250422_1413_Fantasia Dulce Pop_simple_compose_01jsepjem6fd1rqa2v0fk4s218.png" alt="Creator 1">
       <div class="card-content">
         <h3>@nataliax</h3>
         <p>Glamour Nude</p>
       </div>
     </div>
-    <div class="card">
+    <div class="card" style="min-width: 260px;">
       <img src="20250422_2021_Poolside Splash Party_simple_compose_01jsfbqn0hej7vf4hp7bf2ymsj.gif" alt="Creator 2">
       <div class="card-content">
         <h3>@sofiabliss</h3>
         <p>Cosplay Private</p>
       </div>
     </div>
-    <div class="card">
+    <div class="card" style="min-width: 260px;">
       <img src="Imagen3.png" alt="Creator 3">
       <div class="card-content">
         <h3>@luxmiami</h3>
         <p>Exclusive Sets</p>
       </div>
     </div>
-    <div class="card">
+    <div class="card" style="min-width: 260px;">
       <img src="20250422_2126_Pink Striped Convict_remix_01jsffbadrftma691aw677wygj.png" alt="Creator 4">
       <div class="card-content">
         <h3>@valentina.nsfw</h3>
@@ -319,4 +349,6 @@
 </script>
 </body>
 </html>
+
+
 
