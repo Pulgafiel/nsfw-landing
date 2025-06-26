@@ -1,265 +1,322 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>La nueva red NSFW del mundo hispano</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Be Sweet - Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     :root {
-      --rosa: #f72585;
-      --rosa-suave: #ffb3c6;
-      --blanco: #ffffff;
-      --gris: #1a1a1a;
+      --fucsia: #f72585;
+      --gris: #333;
+      --gris-suave: #666;
+      --fondo: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: var(--blanco);
+      background-color: var(--fondo);
       color: var(--gris);
     }
 
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .nav-left {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--fucsia);
+    }
+
+    .nav-right a {
+      text-decoration: none;
+      color: var(--gris);
+      margin-left: 1.5rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-right a:hover {
+      color: var(--fucsia);
+    }
+
     header {
-      background: linear-gradient(135deg, #ffb3c6, #f72585);
-      color: white;
       text-align: center;
       padding: 4rem 2rem;
-      border-bottom-left-radius: 80px;
-      border-bottom-right-radius: 80px;
+      background: linear-gradient(120deg, #ffe0ec, #fff);
     }
 
     header h1 {
+      font-family: 'Playfair Display', serif;
       font-size: 3rem;
-      font-weight: 800;
       margin-bottom: 1rem;
     }
 
     header p {
-      font-size: 1.25rem;
-      font-weight: 400;
-      max-width: 700px;
-      margin: 0 auto;
+      font-size: 1.1rem;
+      color: var(--gris-suave);
+      margin-bottom: 2rem;
     }
 
-    .cta {
-      background-color: white;
-      color: var(--rosa);
-      padding: 1rem 2rem;
-      border: 2px solid white;
-      border-radius: 999px;
-      font-weight: 600;
+    .hero-buttons a {
       text-decoration: none;
+      font-weight: 600;
+      padding: 0.9rem 1.5rem;
+      border-radius: 8px;
+      margin: 0 0.5rem;
       display: inline-block;
-      margin-top: 2rem;
-      transition: all 0.3s ease;
-      cursor: pointer;
     }
 
-    .cta:hover {
-      background-color: var(--rosa-suave);
-      color: var(--gris);
-      border-color: var(--rosa-suave);
+    .explore {
+      background-color: var(--fucsia);
+      color: white;
+    }
+
+    .creator {
+      border: 2px solid var(--fucsia);
+      color: var(--fucsia);
+      background: transparent;
     }
 
     section {
       padding: 4rem 2rem;
-      max-width: 1100px;
+      max-width: 1200px;
       margin: auto;
     }
 
-    h2 {
-      text-align: center;
+    section h2 {
+      font-family: 'Playfair Display', serif;
       font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    section p.subtitle {
+      color: var(--gris-suave);
       margin-bottom: 2rem;
-      color: var(--rosa);
     }
 
     .grid {
       display: grid;
-      gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
     }
 
     .card {
-      background-color: #fff0f5;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(247, 37, 133, 0.15);
-      transition: transform 0.2s ease;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+      overflow: hidden;
     }
 
-    .card:hover {
-      transform: translateY(-8px);
+    .card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
     }
 
-    .card h3 {
-      color: var(--rosa);
-      margin-bottom: 0.75rem;
+    .card-content {
+      padding: 1rem;
     }
 
-    .card p {
-      font-size: 0.95rem;
+    .card-content h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-content p {
+      font-size: 0.9rem;
+      color: var(--gris-suave);
+    }
+
+    .community {
+      text-align: center;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .stat strong {
+      font-size: 1.6rem;
+      color: var(--fucsia);
+      display: block;
     }
 
     footer {
-      text-align: center;
-      background-color: #ffe4ec;
-      padding: 2rem;
+      background: #f9f9f9;
+      padding: 3rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
       font-size: 0.9rem;
-      color: var(--gris);
-      border-top: 1px solid #ffc2d1;
+      border-top: 1px solid #eee;
     }
 
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.6);
-      align-items: center;
-      justify-content: center;
-      animation: fadeIn 0.3s ease;
+    .footer-left {
+      max-width: 300px;
+      margin-bottom: 1.5rem;
     }
 
-    .modal-content {
-      background-color: white;
-      padding: 2rem;
-      border-radius: 16px;
-      max-width: 800px;
-      width: 90%;
-      position: relative;
-      animation: slideUp 0.3s ease;
+    .footer-left h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--fucsia);
+      margin-bottom: 0.5rem;
     }
 
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #333;
+    .footer-links {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .footer-links div h4 {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
     }
 
-    @keyframes slideUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    .footer-links a {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: var(--gris-suave);
+      text-decoration: none;
+    }
+
+    .legal {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+      background-color: #f1f1f1;
+    }
+
+    .legal a {
+      color: var(--gris-suave);
+      margin: 0 0.6rem;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
 
+<nav>
+  <div class="nav-left">Be Sweet.</div>
+  <div class="nav-right">
+    <a href="#"><i data-lucide="home"></i> Home</a>
+    <a href="#"><i data-lucide="compass"></i> Discover</a>
+    <a href="#"><i data-lucide="user-plus"></i> Subscriptions</a>
+    <a href="#"><i data-lucide="bell"></i> Notifications</a>
+    <a href="#"><i data-lucide="mail"></i> Messages</a>
+    <a href="#"><i data-lucide="user"></i> Profile</a>
+  </div>
+</nav>
+
 <header>
-  <h1>La nueva era del contenido NSFW</h1>
-  <p>La red social para descubrir, crecer y conectar. Hecha para creadoras. Pensada para fans.</p>
-  <a href="#registro" class="cta">Unirme ahora</a>
+  <h1>Discover Premium Content</h1>
+  <p>Connect with talented creators and explore exclusive content in a sophisticated, creator-first environment</p>
+  <div class="hero-buttons">
+    <a href="#" class="explore">Start Exploring</a>
+    <a href="#" class="creator">Become a Creator</a>
+  </div>
 </header>
 
 <section>
-  <h2>¿Por qué elegirnos?</h2>
+  <h2>Featured Content</h2>
+  <p class="subtitle">Discover amazing creators and their exclusive previews</p>
   <div class="grid">
     <div class="card">
-      <h3>✨ Descubrimiento Real</h3>
-      <p>Algoritmo para descubrir nuevas creadoras dentro de la plataforma. ¡El contenido se encuentra solo!</p>
+      <img src="20250422_1413_Fantasia Dulce Pop_simple_compose_01jsepjem6fd1rqa2v0fk4s218.png" alt="Creator 1">
+      <div class="card-content">
+        <h3>@nataliax</h3>
+        <p>Glamour Nude</p>
+      </div>
     </div>
     <div class="card">
-      <h3>💸 Comisiones Justas</h3>
-      <p>Creadoras con más beneficios y menos comisiones. Hasta 0% para embajador@s en fase inicial.</p>
+      <img src="20250422_2021_Poolside Splash Party_simple_compose_01jsfbqn0hej7vf4hp7bf2ymsj.gif" alt="Creator 2">
+      <div class="card-content">
+        <h3>@sofiabliss</h3>
+        <p>Cosplay Private</p>
+      </div>
     </div>
     <div class="card">
-      <h3>🔥 Viralidad Orgánica</h3>
-      <p>Reels, hashtags, perfiles destacados y sistema de tendencias para impulsar tu contenido.</p>
+      <img src="Imagen3.png" alt="Creator 3">
+      <div class="card-content">
+        <h3>@luxmiami</h3>
+        <p>Exclusive Sets</p>
+      </div>
     </div>
     <div class="card">
-      <h3>🏅 Gamificación</h3>
-      <p>Puntos, niveles, logros, y concursos. Interactuar y ganar es parte del juego.</p>
+      <img src="20250422_2126_Pink Striped Convict_remix_01jsffbadrftma691aw677wygj.png" alt="Creator 4">
+      <div class="card-content">
+        <h3>@valentina.nsfw</h3>
+        <p>Roleplay & Lingerie</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section>
-  <h2>Pensado para Creadoras</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>🎥 Herramientas de Impacto</h3>
-      <p>Reels, livestreams, encuestas y más. Comparte y conecta de forma creativa.</p>
-    </div>
-    <div class="card">
-      <h3>🌈 Nichos & Subnichos</h3>
-      <p>Perfiles por temática: fitness, cosplay, gamer, etc. Tu comunidad ideal te encuentra.</p>
-    </div>
-    <div class="card">
-      <h3>🎉 Recompensas Reales</h3>
-      <p>Eventos, “Creadora del Mes”, colaboraciones y visibilidad premium.</p>
-    </div>
+<section class="community">
+  <h2>Join Our Growing Community</h2>
+  <div class="stats">
+    <div class="stat"><strong>10K+</strong> Active Creators</div>
+    <div class="stat"><strong>100K+</strong> Happy Subscribers</div>
+    <div class="stat"><strong>1M+</strong> Premium Content</div>
   </div>
 </section>
-
-<section>
-  <h2>Para la Comunidad</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>🔍 Contenido relevante</h3>
-      <p>Una experiencia personalizada basada en intereses, interacción y reputación.</p>
-    </div>
-    <div class="card">
-      <h3>💬 Valora y Conecta</h3>
-      <p>Deja reseñas, comenta públicamente, y forma parte activa del crecimiento de tus favoritas.</p>
-    </div>
-    <div class="card">
-      <h3>🎁 Gana por Interactuar</h3>
-      <p>Recompensas exclusivas por participar. Likes, comentarios y compras te hacen subir de nivel.</p>
-    </div>
-  </div>
-</section>
-
-<section id="registro" style="text-align:center;">
-  <h2>Únete antes del lanzamiento</h2>
-  <p>Acceso anticipado, beneficios únicos y la oportunidad de marcar historia en la nueva comunidad NSFW.</p>
-  <button onclick="openModal()" class="cta">Pre-inscribirse</button>
-</section>
-
-<!-- Modal -->
-<div id="formModal" class="modal">
-  <div class="modal-content">
-    <button class="close" onclick="closeModal()">&times;</button>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeHkJ8ub_fPVs39DlPozqgdmSeuS5ojzhkHAEPn1mEYJFEsTA/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="border:none;">Cargando…</iframe>
-  </div>
-</div>
 
 <footer>
-  © 2025 NSFW Network — La nueva red social NSFW en español.
+  <div class="footer-left">
+    <h3>Be Sweet.</h3>
+    <p>A premium platform that elevates adult content creation through sophisticated design and creator-first features.</p>
+  </div>
+  <div class="footer-links">
+    <div>
+      <h4>Platform</h4>
+      <a href="#">Discover</a>
+      <a href="#">Subscriptions</a>
+    </div>
+    <div>
+      <h4>For Creators</h4>
+      <a href="#">Manage Profile</a>
+      <a href="#">Earnings</a>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <a href="#">Help Center</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
 </footer>
 
+<div class="legal">
+  © 2025 Be Sweet. All rights reserved.
+  | <a href="#">Privacy Policy</a>
+  | <a href="#">Terms of Service</a>
+  | <a href="#">Cookie Policy</a>
+</div>
+
 <script>
-  function openModal() {
-    document.getElementById("formModal").style.display = "flex";
-  }
-
-  function closeModal() {
-    document.getElementById("formModal").style.display = "none";
-  }
-
-  // Cerrar al hacer clic fuera del contenido del modal
-  window.onclick = function(event) {
-    const modal = document.getElementById("formModal");
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  }
+  lucide.createIcons();
 </script>
-
 </body>
 </html>
+
